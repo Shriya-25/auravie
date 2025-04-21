@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Order Confirmed - Thank You! | AuraVie</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css">
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #fff9fb;
+            color: #333;
+        }
+        .thank-you-container {
+            max-width: 800px;
+            margin: 50px auto;
+            padding: 30px;
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 5px 15px rgba(255, 119, 168, 0.1);
+            text-align: center;
+        }
+        .confirmation-icon {
+            color: #ff77a8;
+            font-size: 80px;
+            margin-bottom: 20px;
+        }
+        h1 {
+            color: #ff77a8;
+            margin-bottom: 20px;
+        }
+        .delivery-estimate {
+            background: #fff0f5;
+            padding: 15px;
+            border-radius: 10px;
+            margin: 25px 0;
+            font-size: 1.1rem;
+        }
+        .order-summary {
+            text-align: left;
+            border-top: 1px dashed #ffb6c1;
+            padding-top: 20px;
+            margin-top: 20px;
+        }
+        .order-item {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 10px;
+        }
+        .btn-home {
+            background-color: #ff77a8;
+            color: white;
+            border: none;
+            padding: 12px 30px;
+            border-radius: 30px;
+            font-weight: bold;
+            margin-top: 30px;
+            transition: all 0.3s;
+        }
+        .btn-home:hover {
+            background-color: #ff4d88;
+            transform: translateY(-2px);
+        }
+        .order-number {
+            font-weight: bold;
+            color: #ff1988;
+        }
+    </style>
+</head>
+<body>
+    <!-- Navbar (same as your existing navbar) -->
+    <nav class="navbar navbar-expand-lg navbar-light bg-light sticky-top">
+        <div class="container-fluid">
+          <a class="navbar-brand fw-bold" href="webfinal.html">AuraVie</a>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarContent" aria-controls="navbarContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarContent">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+              <li class="nav-item">
+                <a class="nav-link" href="webfinal.html">Home</a>
+              </li>
+              <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownBrands" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                  Brands
+                </a>
+                <ul class="dropdown-menu" aria-labelledby="navbarDropdownBrands">
+                  <li><a class="dropdown-item" href="wishcare.html">WishCare</a></li>
+                  <li><a class="dropdown-item" href="loreal.html">Loreal</a></li>
+                  <li><a class="dropdown-item" href="mamaearth.html">Mamaearth</a></li>
+                  <li><a class="dropdown-item" href="#">Huda Beauty</a></li>
+                  <li><a class="dropdown-item" href="#">MAC Cosmetics</a></li>
+                  <li><a class="dropdown-item" href="#">Sugar</a></li>
+                </ul>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="cart.html">Cart</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </nav>
+
+    <div class="thank-you-container">
+        <div class="confirmation-icon">✓</div>
+        <h1>Thank You for Your Order!</h1>
+        <p>Your order has been confirmed and will be processed shortly.</p>
+        
+        <div class="delivery-estimate">
+            <p>📦 <strong>Estimated Delivery:</strong> <span id="delivery-date"></span></p>
+            <p>📍 We'll send shipping confirmation to your email.</p>
+        </div>
+        
+        <div class="order-summary">
+            <h4>Order Summary</h4>
+            <p>Order #: <span class="order-number" id="order-number"></span></p>
+            
+            <div id="order-items-container">
+                <!-- Order items will be loaded here -->
+            </div>
+            
+            <div style="border-top: 1px solid #eee; margin-top: 15px; padding-top: 15px;">
+                <div class="order-item">
+                    <span>Subtotal:</span>
+                    <span id="order-subtotal">₹0</span>
+                </div>
+                <div class="order-item">
+                    <span>Shipping:</span>
+                    <span>₹50</span>
+                </div>
+                <div class="order-item">
+                    <span>Tax (5%):</span>
+                    <span id="order-tax">₹0</span>
+                </div>
+                <div class="order-item" style="font-weight: bold; font-size: 1.1rem;">
+                    <span>Total:</span>
+                    <span id="order-total">₹0</span>
+                </div>
+            </div>
+        </div>
+        
+        <a href="webfinal.html" class="btn btn-home">Back to Homepage</a>
+    </div>
+
+    <!-- Footer (same as your existing footer) -->
+    <div class="footer-image"> 
+        <img src="images/footer.png" alt="footer">
+    </div>
+      
+    <footer class="bg-light text-center py-4 mt-5">
+        <p>Follow us on: <a href="https://www.instagram.com" class="text-decoration-none">Instagram</a> | <a href="https://www.facebook.com" class="text-decoration-none">Facebook</a> | <a href="https://www.twitter.com" class="text-decoration-none">Twitter</a></p>
+        <p> Contact Us </p>
+        <p>&copy; 2025 AuraVie. All Rights Reserved. | <a href="#" class="text-decoration-none">Privacy Policy</a></p>
+    </footer>
+
+    <script>
+        // Get the latest order from localStorage
+        document.addEventListener('DOMContentLoaded', function() {
+            const orders = JSON.parse(localStorage.getItem('orders')) || [];
+            const latestOrder = orders[orders.length - 1];
+            
+            if (latestOrder) {
+                // Display order number
+                document.getElementById('order-number').textContent = latestOrder.id;
+                
+                // Display order items
+                const itemsContainer = document.getElementById('order-items-container');
+                latestOrder.items.forEach(item => {
+                    const itemElement = document.createElement('div');
+                    itemElement.className = 'order-item';
+                    itemElement.innerHTML = `
+                        <span>${item.name} × ${item.quantity}</span>
+                        <span>₹${(item.price * item.quantity).toFixed(2)}</span>
+                    `;
+                    itemsContainer.appendChild(itemElement);
+                });
+                
+                // Calculate and display totals
+                const subtotal = latestOrder.items.reduce((sum, item) => sum + (item.price * item.quantity), 0);
+                const tax = subtotal * 0.05;
+                const total = subtotal + tax + 50; // 50 is shipping
+                
+                document.getElementById('order-subtotal').textContent = `₹${subtotal.toFixed(2)}`;
+                document.getElementById('order-tax').textContent = `₹${tax.toFixed(2)}`;
+                document.getElementById('order-total').textContent = `₹${total.toFixed(2)}`;
+                
+                // Calculate delivery date (3-5 business days from now)
+                const deliveryDate = new Date();
+                deliveryDate.setDate(deliveryDate.getDate() + 3 + Math.floor(Math.random() * 3));
+                
+                const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
+                document.getElementById('delivery-date').textContent = deliveryDate.toLocaleDateString('en-US', options);
+            } else {
+                // If no order found, redirect to home after 3 seconds
+                setTimeout(() => {
+                    window.location.href = 'webfinal.html';
+                }, 3000);
+            }
+        });
+    </script>
+    
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
